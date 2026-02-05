@@ -4,6 +4,6 @@ public class Main {
         System.out.println("Hello, World!");
         System.out.println("Hello, World!");
         System.out.println("Subtraction");
-        System.out.println("Multiplication2");
+        System.out.println("Multiplication3");
     }
 }
