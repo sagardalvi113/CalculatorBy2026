@@ -15,7 +15,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/expenses")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "${app.cors.allowed-origins:http://localhost:3000,http://localhost:4200}")
 public class ExpenseController {
 
     @Autowired
@@ -92,11 +92,11 @@ public class ExpenseController {
     }
 
     @GetMapping("/total/category/{category}")
-    public ResponseEntity<Map<String, Double>> getTotalExpensesByCategory(@PathVariable String category) {
+    public ResponseEntity<Map<String, Object>> getTotalExpensesByCategory(@PathVariable String category) {
         Double total = expenseService.getTotalExpensesByCategory(category);
-        Map<String, Double> response = new HashMap<>();
+        Map<String, Object> response = new HashMap<>();
         response.put("total", total);
-        response.put("category", (double) category.hashCode());
+        response.put("category", category);
         return ResponseEntity.ok(response);
     }
 
